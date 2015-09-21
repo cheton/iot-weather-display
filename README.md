@@ -27,8 +27,8 @@ var getCurrentWeatherData = function(callback) {
         'units': 'metric', // metric or imperial
         'q': 'Taipei' // city
     });
-
-    request('http://api.openweathermap.org/data/2.5/weather?' + qs, function(err, rsp, body) {
+    var url = 'http://api.openweathermap.org/data/2.5/weather?' + qs;
+    request(url, function(err, rsp, body) {
         if (err || rsp.statusCode !== 200) {
             return;
         }
