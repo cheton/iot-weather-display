@@ -1,2 +1,2 @@
-# lcd-weather-display
+# LCD Weather Display
 LCD Weather Display with Johnny-Five
