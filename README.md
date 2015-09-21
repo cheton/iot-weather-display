@@ -2,7 +2,7 @@
 LCD Weather Display with Johnny-Five
 
 ##### Breadboard for "LCD - I2C PCF8574"
-![docs/breadboard/lcd-i2c-PCF8574.png](breadboard/lcd-i2c-PCF8574.png)
+![docs/breadboard/lcd-i2c-PCF8574.png](docs/breadboard/lcd-i2c-PCF8574.png)
 
 Run with:
 ```bash
