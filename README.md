@@ -14,6 +14,7 @@ Run with:
 node index.js
 ```
 
+The `index.js` file:
 ```js
 var five = require('johnny-five');
 var board = new five.Board();
