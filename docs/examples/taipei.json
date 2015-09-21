@@ -1,0 +1,42 @@
+{
+    "coord": {
+        "lon": 121.53,
+        "lat": 25.05
+    },
+    "weather": [
+        {
+            "id": 803,
+            "main": "Clouds",
+            "description": "broken clouds",
+            "icon": "04d"
+        }
+    ],
+    "base": "stations",
+    "main": {
+        "temp": 32.14,
+        "pressure": 1006,
+        "humidity": 55,
+        "temp_min": 31.67,
+        "temp_max": 33
+    },
+    "visibility": 10000,
+    "wind": {
+        "speed": 5.7,
+        "deg": 300
+    },
+    "clouds": {
+        "all": 75
+    },
+    "dt": 1439793019,
+    "sys": {
+        "type": 1,
+        "id": 7479,
+        "message": 0.0183,
+        "country": "TW",
+        "sunrise": 1439760507,
+        "sunset": 1439807234
+    },
+    "id": 1668341,
+    "name": "Taipei",
+    "cod": 200
+}

@@ -1,0 +1,30 @@
+{
+  "name": "lcd-weather-display",
+  "version": "0.1.0",
+  "description": "LCD Weather Display with Johnny-Five",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cheton/lcd-weather-display.git"
+  },
+  "keywords": [
+    "Arduino",
+    "Johnny-Five"
+  ],
+  "author": "Cheton Wu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cheton/lcd-weather-display/issues"
+  },
+  "homepage": "https://github.com/cheton/lcd-weather-display",
+  "dependencies": {
+    "johnny-five": "^0.8.91",
+    "lodash": "^3.10.1",
+    "moment": "^2.10.6",
+    "querystring": "^0.2.0",
+    "request": "^2.62.0"
+  }
+}
