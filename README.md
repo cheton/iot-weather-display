@@ -2,6 +2,8 @@
 LCD Weather Display with Johnny-Five
 
 
+![lcd-weather-display.jpg](lcd-weather-display.jpg)
+
 ### Breadboard for "LCD - I2C PCF8574"
 ![docs/breadboard/lcd-i2c-PCF8574.png](docs/breadboard/lcd-i2c-PCF8574.png)
 
