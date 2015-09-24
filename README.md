@@ -24,43 +24,47 @@ var _ = require('lodash');
 var moment = require('moment');
 var request = require('request');
 
-// Current weather data (http://openweathermap.org/current)
-// http://openweathermap.org/weather-data
-//
-// Examples:
-// http://api.openweathermap.org/data/2.5/weather?units=metric&q=Taipei
-var getCurrentWeatherData = function(callback) {
-    var querystring = require('querystring');
-    var qs = querystring.stringify({
-        'units': 'metric', // metric or imperial
-        'q': 'Taipei' // city
-    });
-    var url = 'http://api.openweathermap.org/data/2.5/weather?' + qs;
-    request(url, function(err, rsp, body) {
-        if (err || rsp.statusCode !== 200) {
+var LCDWeatherDisplay = function(lcd) {
+    this.lcd = lcd;
+
+    // Current weather data (http://openweathermap.org/current)
+    // http://openweathermap.org/weather-data
+    //
+    // Examples:
+    // http://api.openweathermap.org/data/2.5/weather?units=metric&q=Taipei
+    this._fetchWeatherData = function(callback) {
+        var querystring = require('querystring');
+        var qs = querystring.stringify({
+            'units': 'metric', // metric or imperial
+            'q': 'Taipei' // city
+        });
+        var url = 'http://api.openweathermap.org/data/2.5/weather?' + qs;
+        request(url, function(err, rsp, body) {
+            if (err || rsp.statusCode !== 200) {
+                err = err || new Error(body);
+            }
+
+            var data = JSON.parse(body);
+            callback(err, data);
+        });
+    };
+
+};
+
+LCDWeatherDisplay.prototype.load = function() {
+    var lcd = this.lcd;
+
+    lcd.clear();
+    lcd.cursor(0, 0).print('Loading...');
+
+    this._fetchWeatherData(function(err, data) {
+        lcd.clear();
+
+        if (err) {
+            lcd.cursor(0, 0).print('Loading data failed.');
             return;
         }
 
-        var data = JSON.parse(body);
-        callback(data);
-    });
-};
-
-board.on('ready', function() {
-    // I2C LCD, PCF8574
-    var lcd = new five.LCD({
-        controller: 'PCF8574',
-        rows: 4,
-        cols: 20
-    });
-
-    this.repl.inject({
-        lcd: lcd
-    });
-
-    lcd.clear();
-
-    getCurrentWeatherData(function(data) {
         var name = _.get(data, 'name');
         var dt = moment(_.get(data, 'dt') * 1000).format('YYYY-MM-DD hh:mm:ss');
         var weather = _.get(data, 'weather[0].main');
@@ -75,6 +79,22 @@ board.on('ready', function() {
         lcd.cursor(2, 0).print('T:' + temp + ' (' + tempMin + '-' + tempMax + ')');
         lcd.cursor(3, 0).print('H:' + humidity + '%  W:' + windSpeed + 'km/h');
     });
+};
 
+board.on('ready', function() {
+    // I2C LCD, PCF8574
+    var lcd = new five.LCD({
+        controller: 'PCF8574',
+        rows: 4,
+        cols: 20
+    });
+    var weatherDisplay = new LCDWeatherDisplay(lcd);
+
+    this.repl.inject({
+        lcd: lcd,
+        weatherDisplay: weatherDisplay
+    });
+
+    weatherDisplay.load();
 });
 ```
