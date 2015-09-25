@@ -4,7 +4,7 @@ var _ = require('lodash');
 var moment = require('moment');
 var request = require('request');
 
-var LCDWeatherDisplay = function(lcd) {
+var WeatherDisplay = function(lcd) {
     this.lcd = lcd;
 
     // Current weather data (http://openweathermap.org/current)
@@ -31,7 +31,7 @@ var LCDWeatherDisplay = function(lcd) {
 
 };
 
-LCDWeatherDisplay.prototype.load = function() {
+WeatherDisplay.prototype.load = function() {
     var lcd = this.lcd;
 
     lcd.clear();
@@ -68,7 +68,7 @@ board.on('ready', function() {
         rows: 4,
         cols: 20
     });
-    var weatherDisplay = new LCDWeatherDisplay(lcd);
+    var weatherDisplay = new WeatherDisplay(lcd);
 
     this.repl.inject({
         lcd: lcd,
