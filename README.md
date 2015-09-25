@@ -8,9 +8,6 @@ IoT Weather Display with Johnny-Five
 ![docs/breadboard/lcd-i2c-PCF8574.png](docs/breadboard/lcd-i2c-PCF8574.png)
 
 ### Demo
-TBD
-
-
 Run with:
 ```bash
 node index.js
