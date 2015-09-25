@@ -1,8 +1,8 @@
-# LCD Weather Display
-LCD Weather Display with Johnny-Five
+# IoT Weather Display
+IoT Weather Display with Johnny-Five
 
 
-![lcd-weather-display.jpg](lcd-weather-display.jpg)
+![iot-weather-display.jpg](lcd-weather-display.jpg)
 
 ### Breadboard for "LCD - I2C PCF8574"
 ![docs/breadboard/lcd-i2c-PCF8574.png](docs/breadboard/lcd-i2c-PCF8574.png)
@@ -24,7 +24,7 @@ var _ = require('lodash');
 var moment = require('moment');
 var request = require('request');
 
-var LCDWeatherDisplay = function(lcd) {
+var WeatherDisplay = function(lcd) {
     this.lcd = lcd;
 
     // Current weather data (http://openweathermap.org/current)
@@ -51,7 +51,7 @@ var LCDWeatherDisplay = function(lcd) {
 
 };
 
-LCDWeatherDisplay.prototype.load = function() {
+WeatherDisplay.prototype.load = function() {
     var lcd = this.lcd;
 
     lcd.clear();
@@ -88,7 +88,7 @@ board.on('ready', function() {
         rows: 4,
         cols: 20
     });
-    var weatherDisplay = new LCDWeatherDisplay(lcd);
+    var weatherDisplay = new WeatherDisplay(lcd);
 
     this.repl.inject({
         lcd: lcd,
