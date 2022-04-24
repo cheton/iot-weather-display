@@ -21,9 +21,9 @@
   },
   "homepage": "https://github.com/cheton/lcd-weather-display",
   "dependencies": {
-    "johnny-five": "^0.8.91",
-    "lodash": "^3.10.1",
-    "moment": "^2.10.6",
+    "johnny-five": "^2.1.0",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.3",
     "querystring": "^0.2.0",
     "request": "^2.62.0"
   }
